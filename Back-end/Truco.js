@@ -1,0 +1,4 @@
+
+class Truco extends JogoDeBaralho{
+    
+}
