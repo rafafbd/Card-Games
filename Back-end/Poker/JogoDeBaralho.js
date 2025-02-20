@@ -29,8 +29,6 @@ class JogoDeBaralho{
         this.configBaralho.push(new Carta("as", "c"));
         this.configBaralho.push(new Carta("as", "e"));
         this.configBaralho.push(new Carta("as", "o"));
-        this.configBaralho.push("joker", "");
-        this.configBaralho.push("joker", "");
     }
 
     tirarCarta(carta){
