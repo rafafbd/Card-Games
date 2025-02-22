@@ -1,0 +1,15 @@
+{
+  "name": "card-games",
+  "version": "1.0.0",
+  "description": "Card games such as Truco and Texas Hold'em",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
