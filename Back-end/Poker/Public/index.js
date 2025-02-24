@@ -1,7 +1,6 @@
 const socket = io(); // Conectar ao servidor
 
 document.addEventListener('DOMContentLoaded', () => {
-    const botao = document.getElementById('botao');
     const fold = document.getElementById('fold');
     const check = document.getElementById('check');
     const call = document.getElementById('call');
@@ -14,22 +13,62 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     fold.addEventListener('click', () => {
-        socket.emit('fold');
+        fold();
     });
 
     check.addEventListener('click', () => { 
-        socket.emit('check');
+        check();
     });
 
     call.addEventListener('click', () => {
-        socket.emit('call');
+        call();
     });
 
     raise.addEventListener('click', () => { 
-        socket.emit('raise', qt.value);
+        raise(qt.value);
     });
 
+    var stack = 25000;
+    var valorCall = 200;
+    var folded = false;
 
+    function call(){
+        if (!folded){
+            stack -= valorCall;
+            socket.emit("call", valorCall);
+        }
+    }
+
+    function check(){
+        if (!folded && valorCall == 0){
+            socket.emite("check");
+        }
+    }
+
+    function raise(qt){
+        if (!folded){
+            if (qt > stack){
+                qt = stack;
+            }
+            socket.emit("raise", qt);
+        }
+    }
+    
+    function fold(){
+        folded = true;
+        call.style.color = "red";
+        fold.style.color = "red";
+        raise.style.color = "red";
+        check.style.color = "red"; 
+    }
+
+    function voltaJogo(){
+        folded = false;
+        call.style.color = "grey";
+        fold.style.color = "grey";
+        raise.style.color = "grey";
+        check.style.color = "grey"; 
+    }
 
     socket.on('mensagem', (msg) => {
         const div = document.createElement('div');

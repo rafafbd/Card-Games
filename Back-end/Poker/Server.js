@@ -15,6 +15,9 @@ const io = new Server(server);
 
 app.use(express.static('public')); // Servir arquivos estáticos
 
+const poker = new Poker();
+var pot = 0;
+
 // Evento de conexão do cliente
 io.on('connection', (socket) => {
     console.log(`Novo usuário conectado: ${socket.id}`);
