@@ -17,6 +17,7 @@ app.use(express.static('public')); // Servir arquivos estáticos
 
 const poker = new Poker();
 var pot = 0;
+var jogadores = {};
 
 // Evento de conexão do cliente
 io.on('connection', (socket) => {
@@ -28,8 +29,8 @@ io.on('connection', (socket) => {
     });
 
     // Quando o cliente envia um evento "botaoClicado"
-    socket.on('botaoClicado', () => {
-        console.log('Botão foi pressionado!');
+    socket.on('comecar', () => {
+        cartas = poker.distribuirCartas()
         io.emit('mensagem', 'Um usuário apertou o botão!');
     });
 

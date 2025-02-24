@@ -53,15 +53,12 @@ class JogoDeBaralho{
         return ctAleatoria;
     }
 
-    distribuirCartas(qtsJogadores, qtsCartas){
-        maos = [];
-        for (let i=0; i<qtsJogadores; i++){
-            let mao = [];
-            for (let j=0; j<qtsCartas; j++){
-                ctAleatoria = this.cartaAleatoria();
-                mao.push(this.baralho[ctAleatoria]);
-                this.baralho.pop(ctAleatoria);
-            }
+    distribuirCartas(qtsCartas){
+        let mao = [];
+        for (let j=0; j<qtsCartas; j++){
+            ctAleatoria = this.cartaAleatoria();
+            mao.push(this.baralho[ctAleatoria]);
+            this.baralho.splice(ctAleatoria, 1);
         }
     }
 }

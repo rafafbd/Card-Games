@@ -1,6 +1,7 @@
 const socket = io(); // Conectar ao servidor
 
 document.addEventListener('DOMContentLoaded', () => {
+    const comecar = document.getElementById('comecar');
     const fold = document.getElementById('fold');
     const check = document.getElementById('check');
     const call = document.getElementById('call');
@@ -8,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const qt = document.getElementById('qtRaise');
     const mensagensDiv = document.getElementById('mensagens');
 
-    botao.addEventListener('click', () => {
-        socket.emit('botaoClicado'); // Enviar evento ao servidor
+    comecar.addEventListener('click', () => {
+        socket.emit('comecar'); // Enviar evento ao servidor
     });
 
     fold.addEventListener('click', () => {
